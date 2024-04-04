@@ -1,4 +1,4 @@
-// <==== Saiyan Adventure ====>
+// <==== Saiyan Adventure By Adam and Karlon ====>
 
 const prompt = require('prompt-sync')();
 const username = prompt('What is your name? ');
@@ -53,6 +53,7 @@ function userTurn(warrior) {
     console.log('5. Recharge Stamina');
     const choice = prompt('Choose your move (1/2/3/4): ');
 
+    // Researched Switch functions from ChatGPT
     switch (choice) {
         case '1':
             return { move: 'Attack', strengthMultiplier: 1, description: 'Your Saiyan launches a fierce attack!' };
@@ -70,7 +71,7 @@ function userTurn(warrior) {
     }
 }
 
-// Function for enemy's turn (picks a random move from the enemyMoves array)
+// Function for enemy's turn (picks a random move from the enemyMoves array) researched Random functions from ChatGPT
 function enemyTurn() {
     return enemyMoves[Math.floor(Math.random() * enemyMoves.length)];
 }
@@ -100,7 +101,7 @@ function battleTurn(userMove, enemyMove, warrior, enemy) {
             warrior.stamina -= 2750; // Reduce stamina for Super Saiyan
             break;
         case 'Recharge':
-            warrior.stamina += 500; // Recharge 50 stamina
+            warrior.stamina += 500; // Recharge 500 stamina
             console.log(`Your Saiyan replenishes 500 stamina. Your Saiyan's stamina: ${warrior.stamina}`);
             break;
     }
@@ -114,14 +115,14 @@ function battleTurn(userMove, enemyMove, warrior, enemy) {
             enemyDamage = -5; // Reduce user damage by 5 if defending
             break;
         case 'Special':
-            enemyDamage = Math.max(0, Math.floor(Math.random() * 400)); // Random damage between 0 and 40 for special attack
+            enemyDamage = Math.max(0, Math.floor(Math.random() * 400)); // Random damage between 0 and 400 for special attack
             break;
         case 'Rage': // Implement rage for enemy
             enemyDamage = Math.max(0, Math.floor(Math.random() * 350)) * 1.5; // Random damage between 0 and 350, multiplied by 1.5 for rage
             enemy.stamina -= 1000; // Reduce stamina for enemy's rage
             break;
         case 'Recharge':
-            enemy.stamina += 500; // Recharge 50 stamina for enemy
+            enemy.stamina += 500; // Recharge 500 stamina for enemy
             console.log(`The enemy replenishes 500 stamina. Enemy's stamina: ${enemy.stamina}`);
             break;
     }
@@ -149,7 +150,7 @@ function battleTurn(userMove, enemyMove, warrior, enemy) {
 }
 
 // Start the battle
-console.log(`Your Saiyan (${warrior.status}) vs The enemy`);
+console.log(`The (${warrior.status} Saiyan ${username}) vs ${enemyName}`);
 
 while (warrior.stamina > 0 && enemy.stamina > 0) {
     const userMove = userTurn(warrior);
